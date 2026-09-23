@@ -70,9 +70,8 @@ html, body {
 /* TELA 1: A IMAGEM INTERATIVA */
 .slide-home {
     position: relative;
-    background-image: url('../assets/img/fundo-aquarela.jpeg');
+    background-image: url('../assets/img/fundo-aquarela.jpeg'); /* Corrigido de .jpeg para .jpg */
     background-size: cover;
-    /* Alterado de 'center bottom' para descer um pouco a imagem e não cortar o topo */
     background-position: center 15%; 
 }
 
@@ -149,9 +148,9 @@ html, body {
 }
 
 /* Posicionamento dos Baldes (Ajuste baseado na imagem gerada) */
-#hs-pre { bottom: 15%; right: 28%; }
-#hs-pro { bottom: 20%; right: 18%; }
-#hs-sim { bottom: 28%; right: 8%; }
+#hs-pre { bottom: 15%; right: 29%; }
+#hs-pro { bottom: 15%; right: 19%; }
+#hs-sim { bottom: 15%; right: 9%; }
 
 /* TELAS DE CONTEÚDO (Estilo Revista) */
 .content-slide {
@@ -277,15 +276,19 @@ html, body {
     font-size: 0.9rem; cursor: pointer;
 }
 
-/* RESPONSIVIDADE */
+/* Base para Desktop (Coloque antes do @media) */
+.toggle-icon { display: none; }
+.intro-content { display: block; }
+
+/* RESPONSIVIDADE (Telas menores que 768px) */
 @media (max-width: 768px) {
-    /* Novo estilo de menu gaveta para celular */
+    /* Menu gaveta para celular */
     .navbar-menu { 
         display: flex; 
         flex-direction: column;
         position: absolute;
         top: 60px;
-        left: -100%; /* Escondido fora da tela por padrão */
+        left: -100%;
         width: 250px;
         height: calc(100vh - 60px);
         background-color: var(--nav-bg);
@@ -295,30 +298,101 @@ html, body {
         box-shadow: 2px 0 10px rgba(0,0,0,0.2);
     }
 
-    /* Classe ativada via JavaScript quando clica no menu */
     .navbar-menu.active {
         left: 0;
     }
 
-    /* Links maiores no celular para facilitar o clique */
     .navbar-menu a {
         padding: 15px 0;
         border-bottom: 1px solid rgba(255,255,255,0.1);
         font-size: 1.1rem;
     }
 
-    /* Caixa de texto volta ao centro e fica menos transparente para facilitar leitura no celular */
+    /* Nova Imagem de Fundo Vertical para Celular */
+    .slide-home {
+        background-image: url('../assets/img/fundo-aquarela-2.jpeg');
+        /* Alinhar com 75% puxa a imagem para a esquerda, revelando o lado direito (baldes). 
+           Se quiser puxar mais ainda, mude para '85% bottom' ou 'right bottom' */
+        background-position: 75% bottom; 
+    }
+
+    /* Ajuste da Caixa de Texto (Fechada por padrão) */
     .floating-intro { 
         top: 5%; 
         left: 5%; 
         right: 5%; 
-        padding: 1.5rem; 
+        padding: 1rem 1.5rem; 
         background: rgba(255, 255, 255, 0.85); 
         border-right: none;
         border-left: 5px solid var(--nav-bg);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 50; /* Adicionado para evitar bloqueio de clique */
     }
     
-    .floating-intro h1 { font-size: 1.8rem; }
+    .floating-intro h1 { 
+        font-size: 1.5rem; 
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .toggle-icon {
+        display: inline-block;
+        font-size: 1.1rem;
+        transition: transform 0.3s ease;
+    }
+
+    /* Esconde os parágrafos no mobile com animação */
+    .intro-content {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+    }
+
+    /* Quando a caixa for clicada */
+    .floating-intro.expanded .intro-content {
+        max-height: 500px; /* Aumentado de 250 para 500 para ter margem de sobra */
+        opacity: 1;
+        margin-top: 1rem;
+    }
+
+    /* Gira a setinha para cima quando aberto */
+    .floating-intro.expanded .toggle-icon {
+        transform: rotate(180deg);
+    }
+
     .magazine-card { padding: 1.5rem; }
     .magazine-card h2 { font-size: 2rem; }
+
+    /* Reposicionamento e redimensionamento dos Hotspots para não encavalar */
+    .hotspot-dot {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .hotspot-label {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        margin-top: 5px;
+    }
+
+    /* Alinhados com os baldes na imagem fundo-aquarela-2.jpeg */
+    #hs-pre { 
+        bottom: 44%; 
+        left: 50%; 
+        right: auto;
+    }
+    #hs-pro { 
+        bottom: 44%; 
+        left: 70%; 
+        right: auto;
+    }
+    #hs-sim { 
+        bottom: 31%; 
+        left: auto; /* Anula o left */
+        right: 5%;  /* Trava o limite na direita, impedindo que o texto vaze da tela */
+    }
 }

@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Função para abrir e fechar a caixa de introdução
+    const introBox = document.querySelector('.floating-intro');
+    if (introBox) {
+        introBox.addEventListener('click', function(e) {
+            // Garante que o Swiper não bloqueie o clique
+            e.stopPropagation(); 
+            this.classList.toggle('expanded');
+        });
+    }
+
     const citationsData = {
         'vieira2016': 'VIEIRA, B. B.; PEREIRA, E. L. Potencial dos probióticos para o uso na aquicultura. Revista da Universidade Vale do Rio Verde, Três Corações, v. 14, n. 2, p. 1223-1241, 2016.',
         'souza2022': 'SOUZA, F. R.; FERREIRA, M. A.; EVANGELISTA-BARRETO, N. S. Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos na aquicultura. In: OPEN SCIENCE RESEARCH IV. Guarujá, 2022.',
