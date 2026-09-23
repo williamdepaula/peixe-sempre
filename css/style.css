@@ -59,18 +59,37 @@ html, body {
     color: var(--nav-hover);
 }
 
-/* CONTEINER PRINCIPAL */
-.swiper {
+/* CONTEINER PRINCIPAL (Apenas o Vertical sofre o desconto do menu) */
+.swiper-v {
     width: 100%;
-    height: 100vh;
-    padding-top: 60px;
+    height: calc(100vh - 60px);
+    position: absolute;
+    top: 60px; /* Encaixa perfeitamente abaixo da barra de 60px */
+    left: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-/* TELA 1: A IMAGEM INTERATIVA */
+/* CARROSSEIS INTERNOS (Horizontais) ocupam 100% do slide vertical */
+.swiper-h {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    margin: 0;
+}
+
+/* TELA 1 E CAPAS GERAIS: Garante que as imagens ou fundos preencham toda a altura corretamente */
+.slide-home, .slide-cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .slide-home {
     position: relative;
-    background-image: url('../assets/img/fundo-aquarela.jpeg'); /* Corrigido de .jpeg para .jpg */
+    background-image: url('../assets/img/fundo-aquarela.jpeg');
     background-size: cover;
     background-position: center 15%; 
 }
@@ -279,6 +298,48 @@ html, body {
 /* Base para Desktop (Coloque antes do @media) */
 .toggle-icon { display: none; }
 .intro-content { display: block; }
+
+/* FORMATAÇÃO DAS CAPAS DE TÓPICO */
+.cover-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.cover-center h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    max-width: 800px;
+    margin-bottom: 20px;
+}
+
+/* ESTILOS DE PAGINAÇÃO SWIPER (AS BOLINHAS) */
+.swiper-pagination-bullet-active {
+    background: var(--accent) !important; /* Laranja para destacar */
+}
+
+/* Posiciona as bolinhas verticais à direita da tela principal */
+.swiper-pagination-v {
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* Posiciona as bolinhas horizontais na base de cada subtópico */
+.swiper-pagination-h {
+    bottom: 20px !important;
+}
+
+/* Ajustes mobile da Capa */
+@media (max-width: 768px) {
+    .cover-center h1 {
+        font-size: 2rem;
+    }
+}
 
 /* RESPONSIVIDADE (Telas menores que 768px) */
 @media (max-width: 768px) {
