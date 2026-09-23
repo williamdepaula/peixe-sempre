@@ -167,9 +167,9 @@ html, body {
 }
 
 /* Posicionamento dos Baldes (Ajuste baseado na imagem gerada) */
-#hs-pre { bottom: 15%; right: 29%; }
-#hs-pro { bottom: 15%; right: 19%; }
-#hs-sim { bottom: 15%; right: 9%; }
+#hs-pre { bottom: 15%; right: 31%; }
+#hs-pro { bottom: 15%; right: 21%; }
+#hs-sim { bottom: 15%; right: 11%; }
 
 /* TELAS DE CONTEÚDO (Estilo Revista) */
 .content-slide {
@@ -341,6 +341,48 @@ html, body {
     }
 }
 
+/* GUIA DE NAVEGAÇÃO (Canto Inferior Esquerdo) */
+.nav-guide {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(30, 58, 95, 0.9); /* Azul escuro do menu com leve transparência */
+    padding: 12px 18px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent); /* Detalhe laranja */
+    z-index: 20;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+}
+
+.nav-guide p {
+    color: #ffffff;
+    font-size: 0.85rem;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 300;
+}
+
+/* Ajuste sutil para a caixa de navegação no celular */
+@media (max-width: 768px) {
+    .nav-guide {
+        bottom: 70px;
+        left: 10px;
+        right: auto;
+        padding: 10px 15px;
+    }
+    .nav-guide p {
+        font-size: 0.75rem;
+    }
+
+    /* Garante que se sobrar alguma label, ela suma no mobile */
+    .hotspot-label {
+        display: none;
+    }
+}
+
 /* RESPONSIVIDADE (Telas menores que 768px) */
 @media (max-width: 768px) {
     /* Menu gaveta para celular */
@@ -443,7 +485,7 @@ html, body {
     /* Alinhados com os baldes na imagem fundo-aquarela-2.jpeg */
     #hs-pre { 
         bottom: 44%; 
-        left: 50%; 
+        left: 55%; 
         right: auto;
     }
     #hs-pro { 
@@ -452,7 +494,7 @@ html, body {
         right: auto;
     }
     #hs-sim { 
-        bottom: 31%; 
+        bottom: 42%; 
         left: auto; /* Anula o left */
         right: 5%;  /* Trava o limite na direita, impedindo que o texto vaze da tela */
     }

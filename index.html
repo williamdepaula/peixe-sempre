@@ -42,19 +42,37 @@
                 <div class="swiper swiper-h">
                     <div class="swiper-wrapper">
                         <!-- Subtópico 1.0: Capa -->
-                        <div class="swiper-slide slide-home slide-cover">
-                            <div class="floating-intro">
-                                <h1>Tecnologias para Piscicultura <i class="fas fa-chevron-down toggle-icon"></i></h1>
-                                <div class="intro-content">
-                                    <p>A nutrição é uma ferramenta vital para manter os animais saudáveis e favorecer o crescimento[cite: 1].</p>
-                                    <p class="hint-text"><i class="fas fa-arrows-alt-h"></i> Deslize para o lado para ler os subtópicos.<br><i class="fas fa-arrows-alt-v"></i> Deslize para baixo para o próximo Tópico.</p>
+                            <div class="swiper-slide slide-home slide-cover">
+                                <div class="floating-intro">
+                                    <h1>Tecnologias para Piscicultura <i class="fas fa-chevron-down toggle-icon"></i></h1>
+                                    <div class="intro-content">
+                                        <p>A nutrição é uma ferramenta vital para manter os animais saudáveis e favorecer o crescimento[cite: 1].</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- HOTSPOTS (Os "pontos" na aquarela)
+                                <div class="hotspot" id="hs-pre" onclick="goToSubtopic(0, 2)"><div class="hotspot-dot"></div><div class="hotspot-label">Prebióticos</div></div>
+                                <div class="hotspot" id="hs-pro" onclick="goToSubtopic(0, 1)"><div class="hotspot-dot"></div><div class="hotspot-label">Probióticos</div></div>
+                                <div class="hotspot" id="hs-sim" onclick="goToSubtopic(0, 3)"><div class="hotspot-dot"></div><div class="hotspot-label">Simbióticos</div></div> -->
+
+                                <!-- HOTSPOTS (Apenas os pontos pulsantes) -->
+                                <div class="hotspot" id="hs-pre" onclick="goToSubtopic(0, 2)">
+                                    <div class="hotspot-dot"></div>
+                                </div>
+                                <div class="hotspot" id="hs-pro" onclick="goToSubtopic(0, 1)">
+                                    <div class="hotspot-dot"></div>
+                                </div>
+                                <div class="hotspot" id="hs-sim" onclick="goToSubtopic(0, 3)">
+                                    <div class="hotspot-dot"></div>
+                                </div>
+                                
+                                <!-- NOVA CAIXA DE NAVEGAÇÃO (Canto inferior esquerdo) -->
+                                <div class="nav-guide">
+                                    <p><i class="fas fa-arrows-alt-h"></i> Deslize para o lado para ler os subtópicos.</p>
+                                    <p><i class="fas fa-arrows-alt-v"></i> Deslize para baixo para o próximo tópico.</p>
                                 </div>
                             </div>
-                            <div class="hotspot" id="hs-pre" onclick="goToSubtopic(0, 2)"><div class="hotspot-dot"></div><div class="hotspot-label">Prebióticos</div></div>
-                            <div class="hotspot" id="hs-pro" onclick="goToSubtopic(0, 1)"><div class="hotspot-dot"></div><div class="hotspot-label">Probióticos</div></div>
-                            <div class="hotspot" id="hs-sim" onclick="goToSubtopic(0, 3)"><div class="hotspot-dot"></div><div class="hotspot-label">Simbióticos</div></div>
-                        </div>
-
+                            
                         <!-- Subtópico 1.1: Probióticos -->
                         <div class="swiper-slide content-slide">
                             <div class="magazine-card">
