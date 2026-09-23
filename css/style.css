@@ -1,0 +1,324 @@
+:root {
+    --nav-bg: #1e3a5f; 
+    --nav-text: #ffffff;
+    --nav-hover: #38bdf8;
+    --text-dark: #2c3e50;
+    --accent: #d97706;
+    --bg-card: rgba(255, 255, 255, 0.95);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden; 
+    background-color: #e2e8f0;
+}
+
+/* MENU SUPERIOR */
+.top-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--nav-bg);
+    color: var(--nav-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-menu a {
+    color: var(--nav-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    cursor: pointer;
+}
+
+.navbar-menu a:hover {
+    color: var(--nav-hover);
+}
+
+/* CONTEINER PRINCIPAL */
+.swiper {
+    width: 100%;
+    height: 100vh;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+/* TELA 1: A IMAGEM INTERATIVA */
+.slide-home {
+    position: relative;
+    background-image: url('../assets/img/fundo-aquarela.jpeg');
+    background-size: cover;
+    /* Alterado de 'center bottom' para descer um pouco a imagem e não cortar o topo */
+    background-position: center 15%; 
+}
+
+.floating-intro {
+    position: absolute;
+    top: 20%;
+    /* Movido para a direita */
+    right: 5%; 
+    left: auto; 
+    max-width: 450px;
+    /* Fundo mais transparente (de 0.9 para 0.7) */
+    background: rgba(255, 255, 255, 0.7); 
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-right: 5px solid var(--nav-bg); /* Mudei a borda para a direita para combinar */
+}
+
+.floating-intro h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--nav-bg);
+    margin-top: 0;
+    font-size: 2.2rem;
+}
+
+.hint-text {
+    font-size: 0.9rem; 
+    color: #64748b;
+}
+
+/* HOTSPOTS (Os Baldes na Imagem) */
+.hotspot {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hotspot-dot {
+    width: 25px;
+    height: 25px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+.hotspot-label {
+    margin-top: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.hotspot:hover .hotspot-label {
+    transform: scale(1.1);
+    background: var(--nav-bg);
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(217, 119, 6, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+}
+
+/* Posicionamento dos Baldes (Ajuste baseado na imagem gerada) */
+#hs-pre { bottom: 15%; right: 28%; }
+#hs-pro { bottom: 20%; right: 18%; }
+#hs-sim { bottom: 28%; right: 8%; }
+
+/* TELAS DE CONTEÚDO (Estilo Revista) */
+.content-slide {
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.magazine-card {
+    background: var(--bg-card);
+    max-width: 800px;
+    width: 100%;
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.magazine-card h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--nav-bg);
+    font-size: 2.5rem;
+    margin-top: 0;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.magazine-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.ref-list {
+    line-height: 1.8; 
+    color: #475569;
+}
+
+/* CITAÇÃO CLICÁVEL */
+.cite-link {
+    color: var(--nav-hover);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: rgba(56, 189, 248, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.cite-link:hover {
+    background: var(--nav-bg);
+    color: white;
+}
+
+/* MODAL DE CITAÇÃO */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none; border: none;
+    font-size: 1.5rem; cursor: pointer; color: #64748b;
+}
+
+.modal-content h3 {
+    margin-top: 0; 
+    color: var(--nav-bg); 
+    font-family: 'Playfair Display', serif;
+}
+
+.modal-text {
+    font-size: 0.95rem; line-height: 1.6;
+    margin: 1.5rem 0; color: #334155;
+}
+
+.modal-btn {
+    display: inline-block;
+    background: var(--nav-bg); color: white;
+    padding: 8px 16px; border-radius: 6px;
+    text-decoration: none; font-weight: 600;
+    font-size: 0.9rem; cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    /* Novo estilo de menu gaveta para celular */
+    .navbar-menu { 
+        display: flex; 
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: -100%; /* Escondido fora da tela por padrão */
+        width: 250px;
+        height: calc(100vh - 60px);
+        background-color: var(--nav-bg);
+        padding: 20px;
+        box-sizing: border-box;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+    }
+
+    /* Classe ativada via JavaScript quando clica no menu */
+    .navbar-menu.active {
+        left: 0;
+    }
+
+    /* Links maiores no celular para facilitar o clique */
+    .navbar-menu a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        font-size: 1.1rem;
+    }
+
+    /* Caixa de texto volta ao centro e fica menos transparente para facilitar leitura no celular */
+    .floating-intro { 
+        top: 5%; 
+        left: 5%; 
+        right: 5%; 
+        padding: 1.5rem; 
+        background: rgba(255, 255, 255, 0.85); 
+        border-right: none;
+        border-left: 5px solid var(--nav-bg);
+    }
+    
+    .floating-intro h1 { font-size: 1.8rem; }
+    .magazine-card { padding: 1.5rem; }
+    .magazine-card h2 { font-size: 2rem; }
+}

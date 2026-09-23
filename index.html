@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tecnologias para Piscicultura</title>
+    
+    <!-- Fontes: Inter para textos e Playfair Display para títulos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- FontAwesome (Ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Seu CSS customizado -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- MENU SUPERIOR FIXO -->
+    <nav class="top-navbar">
+        <!-- Adicionado onclick e o ícone de hambúrguer -->
+        <div class="navbar-brand" onclick="toggleMobileMenu()" style="cursor: pointer;">
+            <i class="fas fa-bars" style="margin-right: 5px;"></i> 
+            <i class="fas fa-water"></i> Peixe Sempre
+        </div>
+        <div class="navbar-menu">
+            <a onclick="goToSlide(0)">Início</a>
+            <a onclick="goToSlide(1)">Probióticos</a>
+            <a onclick="goToSlide(2)">Prebióticos</a>
+            <a onclick="goToSlide(3)">Simbióticos</a>
+            <a onclick="goToSlide(4)">Referências</a>
+        </div>
+    </nav>
+
+    <!-- CARROSSEL PRINCIPAL -->
+    <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+            
+            <!-- SLIDE 0: A CAPA INTERATIVA -->
+            <div class="swiper-slide slide-home">
+                <div class="floating-intro">
+                    <h1>Tecnologias para Piscicultura</h1>
+                    <p>A nutrição é uma ferramenta vital para manter os animais saudáveis e favorecer o crescimento[cite: 1].</p>
+                    <p class="hint-text">
+                        <i class="fas fa-hand-pointer"></i> Interaja com os baldes na imagem ou deslize para os lados para ler o conteúdo.
+                    </p>
+                </div>
+
+                <!-- HOTSPOTS (Os "Baldes" na aquarela) -->
+                <!-- Ajuste os valores de top/left no style.css para alinhar perfeitamente com os baldes da sua imagem -->
+                <div class="hotspot" id="hs-pre" onclick="goToSlide(2)">
+                    <div class="hotspot-dot"></div>
+                    <div class="hotspot-label">Prebióticos</div>
+                </div>
+                <div class="hotspot" id="hs-pro" onclick="goToSlide(1)">
+                    <div class="hotspot-dot"></div>
+                    <div class="hotspot-label">Probióticos</div>
+                </div>
+                <div class="hotspot" id="hs-sim" onclick="goToSlide(3)">
+                    <div class="hotspot-dot"></div>
+                    <div class="hotspot-label">Simbióticos</div>
+                </div>
+            </div>
+
+            <!-- SLIDE 1: PROBIÓTICOS -->
+            <div class="swiper-slide content-slide">
+                <div class="magazine-card">
+                    <h2>Probióticos</h2>
+                    <p>Os probióticos são microrganismos vivos que, quando utilizados em quantidade adequada, podem trazer benefícios ao animal. Na aquicultura, são utilizados principalmente diferentes tipos de bactérias e leveduras <span class="cite-link" onclick="openCitation('vieira2016')">[Vieira & Pereira, 2016]</span>.</p>
+                    <p>Esses microrganismos ajudam a manter o equilíbrio das bactérias presentes no intestino e dificultam a presença de microrganismos prejudiciais <span class="cite-link" onclick="openCitation('souza2022')">[Souza et al., 2022]</span>.</p>
+                    <p><strong>Aplicações:</strong> Estudos com o Surubim híbrido e com larvas de Dourado utilizando <em>Bacillus subtilis</em> demonstraram melhora nas respostas de defesa e no desenvolvimento das vilosidades intestinais <span class="cite-link" onclick="openCitation('oliveira2024')">[Oliveira et al., 2024]</span>.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: PREBIÓTICOS -->
+            <div class="swiper-slide content-slide">
+                <div class="magazine-card">
+                    <h2>Prebióticos</h2>
+                    <p>Os prebióticos são componentes que servem de alimento para determinados microrganismos benéficos, favorecendo sua presença e atividade no intestino dos peixes <span class="cite-link" onclick="openCitation('acunha2023')">[Acunha et al., 2023]</span>.</p>
+                    <p>Eles têm sido amplamente estudados por seus possíveis efeitos sobre a saúde intestinal, as defesas do organismo e o crescimento dos animais, servindo como uma estratégia preventiva contra desafios no ambiente de cultivo <span class="cite-link" onclick="openCitation('acunha2023')">[Acunha et al., 2023]</span>.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: SIMBIÓTICOS -->
+            <div class="swiper-slide content-slide">
+                <div class="magazine-card">
+                    <h2>Simbióticos</h2>
+                    <p>Já os simbióticos são produtos que combinam probióticos e prebióticos em uma mesma formulação. A ideia é associar os microrganismos benéficos a um substrato que favoreça diretamente a sua atuação, potencializando os benefícios <span class="cite-link" onclick="openCitation('souza2022')">[Souza et al., 2022]</span>.</p>
+                    <p>Por exemplo, em testes com alevinos e juvenis de espécies nativas como o Pacu, tratamentos com abordagens simbióticas apresentaram maior número de células intestinais protetoras <span class="cite-link" onclick="openCitation('cornelio2023')">[Cornélio & Cornélio, 2023]</span>.</p>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: REFERÊNCIAS GERAIS -->
+            <div class="swiper-slide content-slide">
+                <div class="magazine-card">
+                    <h2>Referências</h2>
+                    <ul class="ref-list">
+                        <li><strong>ACUNHA, R. M. G. et al.</strong> O uso de imunomoduladores na alimentação de peixes: uma revisão. <em>Research, Society and Development</em>, 2023.</li>
+                        <li><strong>CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S.</strong> A influência do uso de probióticos no desempenho e saúde de peixes nativos. <em>Revista Ibero-Americana</em>, 2023.</li>
+                        <li><strong>SOUZA, F. R. et al.</strong> Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos. In: <em>OPEN SCIENCE RESEARCH IV</em>, 2022.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL DE CITAÇÃO FLUTUANTE -->
+    <div class="modal-overlay" id="citeModal" onclick="closeCitation(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCitation()"><i class="fas fa-times"></i></button>
+            <h3>Referência Completa</h3>
+            <div class="modal-text" id="modalText">
+                <!-- Injetado via JS -->
+            </div>
+            <a class="modal-btn" onclick="closeCitation(); goToSlide(4)">Ver todas as Referências</a>
+        </div>
+    </div>
+
+    <!-- Scripts Externos -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Seu Script Customizado -->
+    <script src="js/script.js"></script>
+</body>
+</html>
