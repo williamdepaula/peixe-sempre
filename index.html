@@ -22,7 +22,8 @@
     <!-- MENU SUPERIOR FIXO -->
     <nav class="top-navbar">
         <div class="navbar-brand" onclick="toggleMobileMenu()" style="cursor: pointer;">
-            <i class="fas fa-bars" style="margin-right: 10px;"></i> Peixe Sempre
+            <!-- Ícone atualizado para fa-water mantendo o comportamento de menu -->
+            <i class="fas fa-water" style="margin-right: 10px;"></i> Peixe Sempre
         </div>
         <div class="navbar-menu">
             <a onclick="goToTopic(0)">Tecnologias</a>
@@ -152,9 +153,9 @@
                             <div class="magazine-card">
                                 <h2>Espécies e Produtos Avaliados</h2>
                                 <ul>
-                                    <li><strong>Surubim híbrido:</strong> Uso de <em>Bacillus subtilis</em> <span class="cite-link">[Veiga et al., 2020]</span>.</li>
-                                    <li><strong>Dourado:</strong> Suplementação com <em>Lactobacillus rhamnosus</em> e Simbiótico <span class="cite-link">[Oliveira et al., 2024]</span>.</li>
-                                    <li><strong>Pacu:</strong> Uso de adsorvente à base de probiótico para reduzir efeitos da aflatoxina <span class="cite-link">[Ziemniczak et al., 2025]</span>.</li>
+                                    <li><strong>Surubim híbrido:</strong> Uso de <em>Bacillus subtilis</em> <span class="cite-link" onclick="openCitation('veiga2020')">[Veiga et al., 2020]</span>.</li>
+                                    <li><strong>Dourado:</strong> Suplementação com <em>Lactobacillus rhamnosus</em> e Simbiótico <span class="cite-link" onclick="openCitation('oliveira2024')">[Oliveira et al., 2024]</span>.</li>
+                                    <li><strong>Pacu:</strong> Uso de adsorvente à base de probiótico para reduzir efeitos da aflatoxina <span class="cite-link" onclick="openCitation('ziemniczak2025')">[Ziemniczak et al., 2025]</span>.</li>
                                 </ul>
                                 <p>Os estudos envolveram diferentes fases, incluindo larvas, e abordaram parâmetros intestinais e imunológicos[cite: 1].</p>
                             </div>
@@ -244,7 +245,8 @@
             <div class="modal-text" id="modalText">
                 <!-- Injetado via JS -->
             </div>
-            <a class="modal-btn" onclick="closeCitation(); goToSlide(4)">Ver todas as Referências</a>
+            <!-- Modificado de goToSlide(4) para goToTopic(4) -->
+            <a class="modal-btn" onclick="closeCitation(); goToTopic(4)">Ver todas as Referências</a>
         </div>
     </div>
 

@@ -39,7 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navegar para Tópico Principal (Vertical) a partir do Menu
     window.goToTopic = function(index) {
+        // 1. Vai para o tópico principal (vertical)
         swiperV.slideTo(index);
+        
+        // 2. Força o subtópico (horizontal) daquele índice a voltar para a capa (slide 0)
+        setTimeout(() => {
+            if (Array.isArray(swiperH)) {
+                if (swiperH[index]) swiperH[index].slideTo(0, 400); // 400ms de animação suave
+            } else {
+                swiperH.slideTo(0, 400);
+            }
+        }, 50); // Um pequeno atraso garante que a animação ocorra sem travar o Swiper vertical
+
+        // 3. Fecha o menu mobile se ele estiver aberto
         const menu = document.querySelector('.navbar-menu');
         if (menu && menu.classList.contains('active')) {
             menu.classList.remove('active');
@@ -81,7 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'souza2022': 'SOUZA, F. R.; FERREIRA, M. A.; EVANGELISTA-BARRETO, N. S. Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos na aquicultura. In: OPEN SCIENCE RESEARCH IV. Guarujá, 2022.',
         'acunha2023': 'ACUNHA, R. M. G. et al. O uso de imunomoduladores na alimentação de peixes: uma revisão. Research, Society and Development, v. 12, n. 4, 2023.',
         'cornelio2023': 'CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S. A influência do uso de probióticos no desempenho e saúde de peixes nativos: uma revisão narrativa. Revista Ibero-Americana, 2023.',
-        'oliveira2024': 'OLIVEIRA et al. (2024). Estudo sobre o Dourado (Salminus brasiliensis) utilizando Lactobacillus rhamnosus, paraprobiotico e combinação.'
+        'oliveira2024': 'OLIVEIRA et al. (2024). Estudo sobre o Dourado (Salminus brasiliensis) utilizando Lactobacillus rhamnosus, paraprobiotico e combinação.',
+        'veiga2020': 'VEIGA et al. (2020). Estudo em Surubim híbrido (Pseudoplatystoma sp.) avaliando o uso de Bacillus subtilis no desempenho e defesa.',
+        'ziemniczak2025': 'ZIEMNICZAK et al. (2025). Adsorvente à base de probiótico para reduzir efeitos fisiológicos da aflatoxina B1 no Pacu (Piaractus mesopotamicus).'
     };
 
     const modal = document.getElementById('citeModal');
