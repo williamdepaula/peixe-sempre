@@ -98,9 +98,9 @@ html, body {
     position: absolute;
     top: 20%;
     /* Movido para a direita */
-    right: 5%; 
+    right: 3%; 
     left: auto; 
-    max-width: 450px;
+    max-width: 680px;
     /* Fundo mais transparente (de 0.9 para 0.7) */
     background: rgba(255, 255, 255, 0.7); 
     backdrop-filter: blur(5px);
@@ -114,7 +114,10 @@ html, body {
     font-family: 'Playfair Display', serif;
     color: var(--nav-bg);
     margin-top: 0;
-    font-size: 2.2rem;
+    /* Reduzi um pouco o tamanho base para o texto longo caber melhor e não quebrar bruscamente */
+    font-size: 1.8rem; 
+    text-align: justify; /* JUSTIFICANDO O TEXTO */
+    line-height: 1.3;    /* Melhora a legibilidade de textos justificados */
 }
 
 .hint-text {
@@ -365,6 +368,41 @@ html, body {
     font-weight: 300;
 }
 
+/* LOGOS INSTITUCIONAIS (Canto Inferior Esquerdo) */
+.logos-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    gap: 15px; /* Espaço entre as imagens */
+    align-items: center;
+    background: rgba(255, 255, 255, 0.85); /* Fundo branco com leve transparência para destacar */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 20; /* Fica acima do fundo, mas abaixo de modais */
+}
+
+.inst-logo {
+    height: 200px; /* Altura fixa para alinhar proporções (Ajuste se necessário) */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Ajustes Mobile para os Logos */
+@media (max-width: 768px) {
+    .logos-container {
+        bottom: 70px;
+        left: 10px;
+        padding: 8px;
+        gap: 10px;
+    }
+    
+    .inst-logo {
+        height: 50px; /* Logos menores no celular */
+    }
+}
+
 /* Ajuste sutil para a caixa de navegação no celular */
 @media (max-width: 768px) {
     .nav-guide {
@@ -419,32 +457,38 @@ html, body {
         background-position: 75% bottom; 
     }
 
-    /* Ajuste da Caixa de Texto (Fechada por padrão) */
+    /* Ajuste da Caixa de Texto */
     .floating-intro { 
-        top: 5%; 
+        /* Abaixar a caixa de 5% para 15% */
+        top: 35%; 
         left: 5%; 
         right: 5%; 
         padding: 1rem 1.5rem; 
-        background: rgba(255, 255, 255, 0.85); 
+        /* Fundo mais transparente (de 0.85 para 0.5) */
+        background: rgba(255, 255, 255, 0.2); 
+        /* Desfocar o fundo (efeito vidro fosco) para manter a legibilidade mesmo transparente */
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         border-right: none;
         border-left: 5px solid var(--nav-bg);
         cursor: pointer;
         transition: all 0.3s ease;
-        z-index: 50; /* Adicionado para evitar bloqueio de clique */
+        z-index: 50; 
     }
     
     .floating-intro h1 { 
-        font-size: 1.5rem; 
+        font-size: 1.3rem; 
         margin: 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        /* Removido o display: flex para a seta não forçar espaços estranhos */
+        display: block; 
+        /* Trocado de justify para center */
+        text-align: center; 
+        line-height: 1.4;
     }
 
     .toggle-icon {
-        display: inline-block;
-        font-size: 1.1rem;
-        transition: transform 0.3s ease;
+        /* Esconder a seta no mobile, como solicitado */
+        display: none; 
     }
 
     /* Esconde os parágrafos no mobile com animação */
