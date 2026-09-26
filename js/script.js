@@ -88,15 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Modal de Citação
-    const citationsData = {
-        'vieira2016': 'VIEIRA, B. B.; PEREIRA, E. L. Potencial dos probióticos para o uso na aquicultura. Revista da Universidade Vale do Rio Verde, Três Corações, v. 14, n. 2, p. 1223-1241, 2016.',
-        'souza2022': 'SOUZA, F. R.; FERREIRA, M. A.; EVANGELISTA-BARRETO, N. S. Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos na aquicultura. In: OPEN SCIENCE RESEARCH IV. Guarujá, 2022.',
-        'acunha2023': 'ACUNHA, R. M. G. et al. O uso de imunomoduladores na alimentação de peixes: uma revisão. Research, Society and Development, v. 12, n. 4, 2023.',
-        'cornelio2023': 'CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S. A influência do uso de probióticos no desempenho e saúde de peixes nativos: uma revisão narrativa. Revista Ibero-Americana, 2023.',
-        'oliveira2024': 'OLIVEIRA et al. (2024). Estudo sobre o Dourado (Salminus brasiliensis) utilizando Lactobacillus rhamnosus, paraprobiotico e combinação.',
-        'veiga2020': 'VEIGA et al. (2020). Estudo em Surubim híbrido (Pseudoplatystoma sp.) avaliando o uso de Bacillus subtilis no desempenho e defesa.',
-        'ziemniczak2025': 'ZIEMNICZAK et al. (2025). Adsorvente à base de probiótico para reduzir efeitos fisiológicos da aflatoxina B1 no Pacu (Piaractus mesopotamicus).'
-    };
+    // Modal de Citação
+     const citationsData = {
+         'acunha2023': 'ACUNHA, R. M. G. et al. O uso de imunomoduladores na alimentação de peixes: uma revisão. Research, Society and Development, v. 12, n. 4, e11312440964, 2023. DOI: 10.33448/rsd-v12i4.40964.',
+         'cornelio2023': 'CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S. A influência do uso de probióticos no desempenho e saúde de peixes nativos: uma revisão narrativa. Revista Ibero-Americana de Humanidades, Ciências e Educação, São Paulo, v. 9, n. 12, 2023.',
+         'souza2022': 'SOUZA, F. R.; FERREIRA, M. A.; EVANGELISTA-BARRETO, N. S. Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos na aquicultura. In: OPEN SCIENCE RESEARCH IV. Guarujá: Científica Digital, 2022. p. 140-157. DOI: 10.37885/220609124.',
+         'vieira2016': 'VIEIRA, B. B.; PEREIRA, E. L. Potencial dos probióticos para o uso na aquicultura. Revista da Universidade Vale do Rio Verde, Três Corações, v. 14, n. 2, p. 1223-1241, 2016. DOI: 10.5892/ruvrd.v14i2.3765.',
+         'braz2022': 'BRAZ, J. M. Prebióticos, probióticos e simbióticos em dietas de juvenis de tilápias-do-Nilo. 2022. Dissertação (Mestrado) – Universidade Federal da Grande Dourados, Dourados, 2022.'
+     };
 
     const modal = document.getElementById('citeModal');
     const modalText = document.getElementById('modalText');

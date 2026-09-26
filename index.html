@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Seu CSS customizado -->
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -33,7 +33,7 @@
             <a onclick="goToTopic(5)">Vitaminas</a>
             <a onclick="goToTopic(6)">Como Escolher</a>
             <a onclick="goToTopic(7)">Atuação</a>
-            <a onclick="goToTopic(8)">Tabelas</a>
+            <a onclick="goToTopic(8)">Resultados</a>
             <a onclick="goToTopic(9)">Pacu</a>
             <a onclick="goToTopic(10)">Referências</a>
         </div>
@@ -50,7 +50,16 @@
                         <div class="swiper-slide slide-home slide-cover">
                             <div class="floating-intro">
                                 <h1>Tecnologias para uma piscicultura sustentável: divulgação de probióticos, prebióticos e simbióticos para produtores, estudantes e profissionais da aquicultura</h1>
+                                
+                                <!-- NOVO TEXTO DE CRÉDITOS ACADÊMICOS -->
+                                <div class="academic-credits">
+                                    <p>Acadêmica: Roberta Mochi de Miranda.</p>
+                                    <p>Orientador: Profª. Drª. Cristiane Meldau de Campos.</p>
+                                    <p>Co-orientador: Prof. Dr. Andre Lima Ferreira</p>
+                                </div>
                             </div>
+
+
                             
                             <div class="logos-container">
                                 <img src="assets/img/UEMS.jpeg" alt="Logo UEMS" class="inst-logo">
@@ -163,7 +172,7 @@
                 </div></div>
             </div>
 
-            <!-- TÓPICO 8: TABELAS (Aninhadas Horizontalmente) -->
+            <!-- TÓPICO 8: RESULTADOS (Aninhadas Horizontalmente) -->
             <div class="swiper-slide">
                 <div class="swiper swiper-h">
                     <div class="swiper-wrapper">
@@ -171,7 +180,7 @@
                         <div class="swiper-slide slide-cover" style="background-color: var(--nav-bg); color: white;">
                             <div class="cover-center">
                                 <h1>Tabelas de Resultados</h1>
-                                <p style="color: #cbd5e1;"><i class="fas fa-arrow-right"></i> Deslize para o lado para ver as tabelas e referências de estudos.</p>
+                                <p class="swipe-hint"><i class="fas fa-arrow-right"></i> Deslize para o lado para ver as tabelas e referências de estudos.</p>
                             </div>
                         </div>
                         
@@ -212,23 +221,55 @@
             </div>
 
             <!-- TÓPICO 10: REFERÊNCIAS -->
-            <div class="swiper-slide">
-                <div class="swiper swiper-h">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide content-slide">
-                            <div class="magazine-card">
-                                <h2>Referências Bibliográficas</h2>
-                                <ul class="ref-list">
-                                    <li><strong>ACUNHA, R. M. G. et al.</strong> O uso de imunomoduladores na alimentação de peixes: uma revisão. <em>Research, Society and Development</em>, 2023.</li>
-                                    <li><strong>CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S.</strong> A influência do uso de probióticos no desempenho e saúde de peixes nativos. <em>Revista Ibero-Americana</em>, 2023.</li>
-                                    <li><strong>SOUZA, F. R. et al.</strong> Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos. In: <em>OPEN SCIENCE RESEARCH IV</em>, 2022.</li>
-                                    <li><strong>VIEIRA, B. B.; PEREIRA, E. L.</strong> Potencial dos probióticos para o uso na aquicultura. <em>Revista da Universidade Vale do Rio Verde</em>, 2016.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             <div class="swiper-slide">
+                 <div class="swiper swiper-h">
+                     <div class="swiper-wrapper">
+                         
+                         <!-- Slide 0: Capa Referências -->
+                         <div class="swiper-slide slide-cover" style="background-color: var(--nav-bg); color: white;">
+                             <div class="cover-center">
+                                 <h1>Referências Bibliográficas</h1>
+                                 <p class="swipe-hint"><i class="fas fa-arrow-right"></i> Deslize para o lado para ler as referências.</p>
+                             </div>
+                         </div>
+                         
+                         <!-- Slide 1 de Referências -->
+                         <div class="swiper-slide content-slide">
+                             <div class="magazine-card">
+                                 <h2>Referências (1/3)</h2>
+                                 <ul class="ref-list">
+                                     <li><strong>ACUNHA, R. M. G. et al.</strong> O uso de imunomoduladores na alimentação de peixes: uma revisão. <em>Research, Society and Development</em>, v. 12, n. 4, e11312440964, 2023. DOI: 10.33448/rsd-v12i4.40964.</li>
+                                     <li><strong>CORNÉLIO, J. P. S.; CORNÉLIO, K. C. S.</strong> A influência do uso de probióticos no desempenho e saúde de peixes nativos: uma revisão narrativa. <em>Revista Ibero-Americana de Humanidades, Ciências e Educação</em>, São Paulo, v. 9, n. 12, 2023.</li>
+                                 </ul>
+                             </div>
+                         </div>
+
+                         <!-- Slide 2 de Referências -->
+                         <div class="swiper-slide content-slide">
+                             <div class="magazine-card">
+                                 <h2>Referências (2/3)</h2>
+                                 <ul class="ref-list">
+                                     <li><strong>SOUZA, F. R.; FERREIRA, M. A.; EVANGELISTA-BARRETO, N. S.</strong> Aplicação de micro-organismos e algas como probióticos, prebióticos e simbióticos na aquicultura. In: <em>OPEN SCIENCE RESEARCH IV</em>. Guarujá: Científica Digital, 2022. p. 140-157. DOI: 10.37885/220609124.</li>
+                                     <li><strong>VIEIRA, B. B.; PEREIRA, E. L.</strong> Potencial dos probióticos para o uso na aquicultura. <em>Revista da Universidade Vale do Rio Verde</em>, Três Corações, v. 14, n. 2, p. 1223-1241, 2016. DOI: 10.5892/ruvrd.v14i2.3765.</li>
+                                 </ul>
+                             </div>
+                         </div>
+
+                         <!-- Slide 3 de Referências -->
+                         <div class="swiper-slide content-slide">
+                             <div class="magazine-card">
+                                 <h2>Referências (3/3)</h2>
+                                 <ul class="ref-list">
+                                     <li><strong>BRAZ, J. M.</strong> Prebióticos, probióticos e simbióticos em dietas de juvenis de tilápias-do-Nilo. 2022. Dissertação (Mestrado) – Universidade Federal da Grande Dourados, Dourados, 2022.</li>
+                                 </ul>
+                             </div>
+                         </div>
+                         
+                     </div>
+                     <!-- Paginação horizontal (bolinhas) para as referências -->
+                     <div class="swiper-pagination swiper-pagination-h"></div>
+                 </div>
+             </div>
 
         </div>
         <!-- Paginação vertical (Mostra qual tópico o usuário está) -->
@@ -268,6 +309,6 @@
     <!-- Scripts Externos -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Seu Script Customizado -->
-    <script src="js/script.js?v=4"></script>
+    <script src="js/script.js?v=5"></script>
 </body>
 </html>

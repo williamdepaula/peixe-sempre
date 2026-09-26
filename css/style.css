@@ -114,10 +114,24 @@ html, body {
     font-family: 'Playfair Display', serif;
     color: var(--nav-bg);
     margin-top: 0;
-    /* Reduzi um pouco o tamanho base para o texto longo caber melhor e não quebrar bruscamente */
     font-size: 1.8rem; 
-    text-align: justify; /* JUSTIFICANDO O TEXTO */
-    line-height: 1.3;    /* Melhora a legibilidade de textos justificados */
+    text-align: justify; 
+    line-height: 1.3;    
+}
+
+/* ESTILIZAÇÃO DOS CRÉDITOS ACADÊMICOS */
+.academic-credits {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(30, 58, 95, 0.2); /* Linha divisória sutil */
+    text-align: left; /* Alinhado à esquerda para facilitar a leitura */
+}
+
+.academic-credits p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin: 4px 0;
+    font-weight: 500;
 }
 
 .hint-text {
@@ -632,23 +646,48 @@ html, body {
     border: none;
 }
 
+/* Aviso de Deslizar (Desktop) */
+.swipe-hint {
+     color: #cbd5e1;
+     font-size: 1.4rem; /* Fonte maior no Desktop */
+     margin-top: 15px;
+}
+
 /* RESPONSIVIDADE (Telas menores que 768px) */
 @media (max-width: 768px) {
-    /* Menu gaveta para celular */
-    .navbar-menu { 
-        display: flex; 
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: -100%;
-        width: 250px;
-        height: calc(100vh - 60px);
-        background-color: var(--nav-bg);
-        padding: 20px;
-        box-sizing: border-box;
-        transition: left 0.3s ease;
-        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
-    }
+     /* Menu gaveta para celular */
+     .navbar-menu { 
+         display: flex; 
+         flex-direction: column;
+         position: absolute;
+         top: 60px;
+         left: -100%;
+         width: 250px;
+         height: calc(100vh - 60px);
+         background-color: var(--nav-bg);
+         /* Modificado: Padding bottom extra grande para fugir da barra do navegador */
+         padding: 20px 20px 100px 20px; 
+         box-sizing: border-box;
+         transition: left 0.3s ease;
+         box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+         overflow-y: auto;
+     }
+
+     /* Tamanho da fonte menor nas Referências para caber bem no celular */
+     .ref-list {
+         font-size: 0.85rem;
+         line-height: 1.5;
+     }
+     
+     /* Diminui o subtítulo das referências */
+     .magazine-card h2 { 
+         font-size: 1.6rem; 
+     }
+
+     /* Aviso de Deslizar menor no Celular */
+     .swipe-hint {
+         font-size: 0.95rem;
+     }
 
     .navbar-menu.active {
         left: 0;
@@ -670,13 +709,13 @@ html, body {
 
     /* Ajuste da Caixa de Texto */
     .floating-intro { 
-        /* Abaixar a caixa de 5% para 15% */
+        /* Abaixar a caixa de 5% para 35% */
         top: 35%; 
         left: 5%; 
         right: 5%; 
         padding: 1rem 1.5rem; 
         /* Fundo mais transparente (de 0.85 para 0.5) */
-        background: rgba(255, 255, 255, 0.2); 
+        background: rgba(255, 255, 255, 0.5); 
         /* Desfocar o fundo (efeito vidro fosco) para manter a legibilidade mesmo transparente */
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
@@ -688,13 +727,23 @@ html, body {
     }
     
     .floating-intro h1 { 
-        font-size: 1.3rem; 
+        /* TÍTULO AINDA MENOR NO CELULAR */
+        font-size: 1.15rem; 
         margin: 0;
-        /* Removido o display: flex para a seta não forçar espaços estranhos */
         display: block; 
-        /* Trocado de justify para center */
         text-align: center; 
         line-height: 1.4;
+    }
+
+    /* Ajuste os créditos para o celular */
+    .academic-credits {
+        text-align: center; /* Centralizado no mobile para acompanhar o título */
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+    
+    .academic-credits p {
+        font-size: 0.85rem; /* Fonte um pouco menor no celular */
     }
 
     .toggle-icon {
