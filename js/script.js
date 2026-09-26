@@ -113,4 +113,61 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.remove('active');
         }
     };
-});
+
+    // =========================================
+    // MODAL DE IMAGEM AMPLIADA (VISUALIZADOR)
+    // =========================================
+    const imgModal = document.getElementById('imageModal');
+    const modalExpandedImg = document.getElementById('modalExpandedImg');
+    const scrollArea = document.getElementById('imageScrollArea');
+
+    // Função para abrir o modal de imagem
+    function openImageModal(imgSrc) {
+        modalExpandedImg.src = imgSrc;
+        imgModal.classList.add('active');
+        
+        // Centraliza a rolagem assim que o modal abre
+        setTimeout(() => {
+            scrollArea.scrollLeft = (scrollArea.scrollWidth - scrollArea.clientWidth) / 2;
+            scrollArea.scrollTop = (scrollArea.scrollHeight - scrollArea.clientHeight) / 2;
+        }, 50);
+    }
+
+    // Vincula o evento em todas as imagens de apresentação
+    document.querySelectorAll('.presentation-img').forEach(img => {
+        // Para PC (mouse)
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            openImageModal(this.src);
+        });
+        
+        // Para Celular (toque rápido - evita o bloqueio do Swiper)
+        img.addEventListener('touchend', function(e) {
+            // Se o toque durou pouco e o usuário não tentou arrastar a tela, abre o modal
+            e.preventDefault(); 
+            openImageModal(this.src);
+        });
+    });
+
+    // Função para fechar o visualizador de imagens
+    window.closeImageModal = function(event) {
+        // Fecha se não tiver evento (chamado direto), se clicar no X, ou no fundo preto
+        if (!event || event.target.id === 'imageModal' || event.target.closest('.image-modal-close')) {
+            imgModal.classList.remove('active');
+        }
+    };
+
+    // Fechar modais ao pressionar a tecla ESC
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            // Fecha o modal de imagem se estiver aberto
+            if (imgModal && imgModal.classList.contains('active')) {
+                window.closeImageModal();
+            }
+            // Fecha o modal de citação se estiver aberto
+            if (modal && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        }
+    });
+}); // Fim do DOMContentLoaded
