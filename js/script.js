@@ -114,44 +114,150 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // =========================================
-    // MODAL DE IMAGEM AMPLIADA (VISUALIZADOR)
+   // =========================================
+    // MODAL DE IMAGEM AMPLIADA COM ZOOM MANUAL
     // =========================================
     const imgModal = document.getElementById('imageModal');
     const modalExpandedImg = document.getElementById('modalExpandedImg');
     const scrollArea = document.getElementById('imageScrollArea');
+    const zoomSlider = document.getElementById('zoomSlider');
+    const btnZoomOut = document.getElementById('btnZoomOut');
+    const btnZoomIn = document.getElementById('btnZoomIn');
 
-    // Função para abrir o modal de imagem
-    function openImageModal(imgSrc) {
-        modalExpandedImg.src = imgSrc;
-        imgModal.classList.add('active');
-        
-        // Centraliza a rolagem assim que o modal abre
-        setTimeout(() => {
-            scrollArea.scrollLeft = (scrollArea.scrollWidth - scrollArea.clientWidth) / 2;
-            scrollArea.scrollTop = (scrollArea.scrollHeight - scrollArea.clientHeight) / 2;
-        }, 50);
-    }
+    // Função global para abrir a imagem
+    window.openImageModal = function(imgSrc) {
+    if (!imgModal || !modalExpandedImg) return;
 
-    // Vincula o evento em todas as imagens de apresentação
-    document.querySelectorAll('.presentation-img').forEach(img => {
-        // Para PC (mouse)
-        img.addEventListener('click', function(e) {
-            e.preventDefault();
-            openImageModal(this.src);
-        });
-        
-        // Para Celular (toque rápido - evita o bloqueio do Swiper)
-        img.addEventListener('touchend', function(e) {
-            // Se o toque durou pouco e o usuário não tentou arrastar a tela, abre o modal
-            e.preventDefault(); 
-            openImageModal(this.src);
-        });
+    modalExpandedImg.src = imgSrc;
+
+    let initialZoom = window.innerWidth <= 768 ? 200 : 120;
+
+    zoomSlider.value = initialZoom;
+    modalExpandedImg.style.setProperty('--zoom-width', initialZoom + 'vw');
+
+    imgModal.classList.add('active');
+
+    setTimeout(() => {
+        scrollArea.scrollLeft =
+            (scrollArea.scrollWidth - scrollArea.clientWidth) / 2;
+
+        scrollArea.scrollTop =
+            (scrollArea.scrollHeight - scrollArea.clientHeight) / 2;
+    }, 50);
+};
+
+    // Atualiza o tamanho em tempo real pela barra
+    if (zoomSlider) {
+    zoomSlider.addEventListener('input', function() {
+        modalExpandedImg.style.setProperty(
+            '--zoom-width',
+            this.value + 'vw'
+        );
+    });
+}
+
+    // Lógica dos botões de Menos e Mais
+    if (btnZoomOut && btnZoomIn && zoomSlider) {
+
+    btnZoomOut.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        let newVal = parseInt(zoomSlider.value) - 25;
+
+        if (newVal < parseInt(zoomSlider.min)) {
+            newVal = parseInt(zoomSlider.min);
+        }
+
+        zoomSlider.value = newVal;
+
+        modalExpandedImg.style.setProperty(
+            '--zoom-width',
+            newVal + 'vw'
+        );
     });
 
-    // Função para fechar o visualizador de imagens
+    btnZoomIn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        let newVal = parseInt(zoomSlider.value) + 25;
+
+        if (newVal > parseInt(zoomSlider.max)) {
+            newVal = parseInt(zoomSlider.max);
+        }
+
+        zoomSlider.value = newVal;
+
+        modalExpandedImg.style.setProperty(
+            '--zoom-width',
+            newVal + 'vw'
+        );
+    });
+}
+
+    // =========================================
+    // LÓGICA DE CLICAR E ARRASTAR (DESKTOP E TOUCH)
+    // =========================================
+    let isDragging = false;
+    let startX, startY, scrollLeftPos, scrollTopPos;
+
+    if (scrollArea) {
+        // Função que inicia o arrasto
+        const startDragging = (e) => {
+            isDragging = true;
+            scrollArea.classList.add('dragging');
+            // Suporta mouse ou toque na tela
+            const pageX = e.pageX || e.touches[0].pageX;
+            const pageY = e.pageY || e.touches[0].pageY;
+            
+            startX = pageX - scrollArea.offsetLeft;
+            startY = pageY - scrollArea.offsetTop;
+            scrollLeftPos = scrollArea.scrollLeft;
+            scrollTopPos = scrollArea.scrollTop;
+        };
+
+        // Função que para o arrasto
+        const stopDragging = () => {
+            isDragging = false;
+            scrollArea.classList.remove('dragging');
+        };
+
+        // Função que executa o movimento do arrasto
+        const handleDrag = (e) => {
+            if (!isDragging) return;
+            e.preventDefault(); // Previne o comportamento padrão (scroll da página inteira ou zoom pinça default)
+            
+            const pageX = e.pageX || (e.touches && e.touches[0] ? e.touches[0].pageX : 0);
+            const pageY = e.pageY || (e.touches && e.touches[0] ? e.touches[0].pageY : 0);
+            
+            const x = pageX - scrollArea.offsetLeft;
+            const y = pageY - scrollArea.offsetTop;
+            
+            // O multiplicador "2" dita a velocidade em que a imagem se move junto com o mouse
+            const walkX = (x - startX) * 2; 
+            const walkY = (y - startY) * 2;
+            
+            scrollArea.scrollLeft = scrollLeftPos - walkX;
+            scrollArea.scrollTop = scrollTopPos - walkY;
+        };
+
+        // Eventos de Mouse (PC)
+        scrollArea.addEventListener('mousedown', startDragging);
+        scrollArea.addEventListener('mouseleave', stopDragging);
+        scrollArea.addEventListener('mouseup', stopDragging);
+        scrollArea.addEventListener('mousemove', handleDrag);
+
+        // Eventos de Toque (Celular - como alternativa ao scroll nativo)
+        scrollArea.addEventListener('touchstart', startDragging, { passive: false });
+        scrollArea.addEventListener('touchend', stopDragging);
+        scrollArea.addEventListener('touchmove', handleDrag, { passive: false });
+    }
+
+    // =========================================
+    // FECHAR MODAL
+    // =========================================
     window.closeImageModal = function(event) {
-        // Fecha se não tiver evento (chamado direto), se clicar no X, ou no fundo preto
+        if (event && event.target.closest('.zoom-control-container')) return;
+        
         if (!event || event.target.id === 'imageModal' || event.target.closest('.image-modal-close')) {
             imgModal.classList.remove('active');
         }
@@ -160,12 +266,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fechar modais ao pressionar a tecla ESC
     document.addEventListener('keydown', function(event) {
         if (event.key === "Escape") {
-            // Fecha o modal de imagem se estiver aberto
             if (imgModal && imgModal.classList.contains('active')) {
                 window.closeImageModal();
             }
-            // Fecha o modal de citação se estiver aberto
-            if (modal && modal.classList.contains('active')) {
+            if (typeof modal !== 'undefined' && modal && modal.classList.contains('active')) {
                 modal.classList.remove('active');
             }
         }

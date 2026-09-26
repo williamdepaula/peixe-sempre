@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Seu CSS customizado -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
 
@@ -76,7 +76,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/1-Conceitos e importancia dos aditivos.jpeg" alt="Conceitos e Importância" class="presentation-img">
+                        <img src="assets/img/1-Conceitos e importancia dos aditivos.jpeg" alt="Conceitos e Importância" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -85,7 +89,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/2-Probioticos na piscicultura.jpeg" alt="Probióticos" class="presentation-img">
+                        <img src="assets/img/2-Probioticos na piscicultura.jpeg" alt="Probióticos" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -94,7 +102,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/3-Prebioticos na piscicultura.jpeg" alt="Prebióticos" class="presentation-img">
+                        <img src="assets/img/3-Prebioticos na piscicultura.jpeg" alt="Prebióticos" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -103,7 +115,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/4-Simbioticos na piscicultura.jpeg" alt="Simbióticos" class="presentation-img">
+                        <img src="assets/img/4-Simbioticos na piscicultura.jpeg" alt="Simbióticos" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -112,7 +128,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/5-Vitaminas e minerais.jpeg" alt="Vitaminas e Minerais" class="presentation-img">
+                        <img src="assets/img/5-Vitaminas e minerais.jpeg" alt="Vitaminas e Minerais" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -121,7 +141,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/6-Como escolher e utilizar um aditivo na piscicultura.jpeg" alt="Como escolher e utilizar" class="presentation-img">
+                        <img src="assets/img/6-Como escolher e utilizar um aditivo na piscicultura.jpeg" alt="Como escolher e utilizar" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -130,7 +154,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/7-Onde o aditivo pode atuar.jpeg" alt="Onde o aditivo pode atuar" class="presentation-img">
+                        <img src="assets/img/7-Onde o aditivo pode atuar.jpeg" alt="Onde o aditivo pode atuar" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -149,12 +177,20 @@
                         
                         <!-- Subtópico 8.1: Tabela 1 -->
                         <div class="swiper-slide image-slide-container">
-                            <img src="assets/img/Tabela 1.png" alt="Tabela 1" class="presentation-img">
+                            <img src="assets/img/Tabela 1.png" alt="Tabela 1" class="presentation-img" onclick="openImageModal(this.src)">
+                            <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                            <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
 
                         <!-- Subtópico 8.2: Tabela 2 -->
                         <div class="swiper-slide image-slide-container">
-                            <img src="assets/img/Tabela 2.png" alt="Tabela 2" class="presentation-img">
+                            <img src="assets/img/Tabela 2.png" alt="Tabela 2" class="presentation-img" onclick="openImageModal(this.src)">
+                            <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                            <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                                <i class="fas fa-expand"></i>
+                            </button>
                         </div>
                     </div>
                     <!-- Bolinhas para indicar que existem telas laterais aqui -->
@@ -166,7 +202,11 @@
             <div class="swiper-slide">
                 <div class="swiper swiper-h"><div class="swiper-wrapper">
                     <div class="swiper-slide image-slide-container">
-                        <img src="assets/img/8-Pacu.jpeg" alt="Estudo do Pacu" class="presentation-img">
+                        <img src="assets/img/8-Pacu.jpeg" alt="Estudo do Pacu" class="presentation-img" onclick="openImageModal(this.src)">
+                        <!-- NOVO BOTÃO DE EXPANDIR (Aparece apenas no celular) -->
+                        <button class="mobile-expand-btn" onclick="openImageModal(this.previousElementSibling.src)">
+                            <i class="fas fa-expand"></i>
+                        </button>
                     </div>
                 </div></div>
             </div>
@@ -208,7 +248,7 @@
         </div>
     </div>
 
-    <!-- MODAL DE IMAGEM AMPLIADA (Visualizador com Lupa) -->
+    <!-- MODAL DE IMAGEM AMPLIADA (Visualizador com Lupa e Zoom) -->
     <div class="image-modal-overlay" id="imageModal" onclick="closeImageModal(event)">
         <button class="image-modal-close" onclick="closeImageModal()"><i class="fas fa-times"></i></button>
         
@@ -216,14 +256,18 @@
             <img id="modalExpandedImg" src="" alt="Imagem Ampliada">
         </div>
         
-        <div class="image-modal-hint">
-            <i class="fas fa-search-plus"></i> Deslize para explorar os detalhes
+        <!-- CONTROLE DESLIZANTE DE ZOOM (Fixo embaixo) -->
+        <div class="zoom-control-container" onclick="event.stopPropagation()">
+            <i class="fas fa-search-minus" id="btnZoomOut" style="cursor: pointer; padding: 10px;"></i>
+            <!-- Aumentei o limite máximo para 400% de zoom para dar mais liberdade -->
+            <input type="range" id="zoomSlider" min="50" max="400" value="200" class="zoom-slider">
+            <i class="fas fa-search-plus" id="btnZoomIn" style="cursor: pointer; padding: 10px;"></i>
         </div>
     </div>
 
     <!-- Scripts Externos -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- Seu Script Customizado -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=4"></script>
 </body>
 </html>

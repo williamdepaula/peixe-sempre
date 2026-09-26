@@ -466,14 +466,13 @@ html, body {
     visibility: visible;
 }
 
+/* Botão de Fechar muito mais visível (Fundo Preto Escuro com leve transparência) */
 .image-modal-close {
     position: absolute;
     top: 20px; right: 20px;
-    /* Fundo escuro transparente para constrastar com o branco */
-    background: rgba(15, 23, 42, 0.6); 
+    background: rgba(0, 0, 0, 0.8); 
     color: white;
-    /* Borda sutil escura */
-    border: 1px solid rgba(255,255,255,0.2); 
+    border: none;
     border-radius: 50%;
     width: 45px; height: 45px;
     font-size: 1.5rem;
@@ -481,29 +480,45 @@ html, body {
     z-index: 3010;
     display: flex; align-items: center; justify-content: center;
     transition: background 0.3s;
-    backdrop-filter: blur(4px); /* Borrão sutil atrás do botão */
 }
 
 .image-modal-close:hover {
-    background: rgba(15, 23, 42, 0.9); /* Fica mais escuro ao passar o mouse */
+    background: rgba(0, 0, 0, 1);
 }
 
+/* Container de rolagem absorve os eventos */
 .image-modal-scroll-area {
     width: 100%;
     height: 100%;
-    overflow: auto; /* Permite arrastar para ver todas as pontas da imagem */
-    -webkit-overflow-scrolling: touch; /* Rolagem suave no celular */
+    overflow: auto; 
+    -webkit-overflow-scrolling: touch; 
     display: flex;
     align-items: center;
+    cursor: grab; 
+    position: relative; /* Garante que atue como camada sólida para o mouse */
+}
+
+.image-modal-scroll-area.dragging {
+    cursor: grabbing !important;
 }
 
 .image-modal-scroll-area img {
     display: block;
-    max-width: none;
-    /* Tamanho forçado no celular (2x a largura da tela) para criar o "zoom" nativo */
-    width: 200vw; 
+    width: var(--zoom-width, 120vw);
     height: auto;
+
+    max-width: none;
+    max-height: none;
+
     margin: auto;
+
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+
+    flex-shrink: 0;
+
+    transition: width 0.15s ease-out;
 }
 
 .image-modal-hint {
@@ -526,11 +541,95 @@ html, body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
 }
 
-/* Ajuste do Zoom no Desktop (como a tela é grande, não precisa ampliar tanto) */
-@media (min-width: 768px) {
-    .image-modal-scroll-area img {
-        width: 120vw; 
+
+/* WRAPPER DA IMAGEM E BOTÃO DE EXPANDIR (MOBILE) */
+.img-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Botão de expandir bem sutil e transparente no meio da imagem (Celular) */
+.mobile-expand-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.3); /* Preto bem transparente */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borda fina */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(2px); /* Efeito vidro na imagem atrás dele */
+}
+
+@media (max-width: 768px) {
+    /* Mostra o botão grande e transparente no meio da imagem no celular */
+    .mobile-expand-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
+    
+    /* Remove a dica de texto no modal (substituída pela barra de zoom) */
+    .image-modal-hint {
+        display: none;
+    }
+}
+
+/* =========================================
+   CONTROLE DE ZOOM DESLIZANTE (MODAL)
+========================================= */
+.zoom-control-container {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(30, 58, 95, 0.9);
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 3020;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    color: white;
+}
+
+.zoom-slider {
+    -webkit-appearance: none;
+    width: 150px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    outline: none;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent); /* Bolinha Laranja */
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.zoom-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
 }
 
 /* RESPONSIVIDADE (Telas menores que 768px) */
